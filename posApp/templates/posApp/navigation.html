@@ -1,0 +1,35 @@
+{% load static %} {% load auth_extras %}
+<!-- partial:partials/_sidebar.html -->
+<!-- SIDEBAR -->
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open bg-dark bg-gradient">
+  <div class="mdc-drawer__header border-bottom border-light">
+    <p class="brand-logo">
+      <h3 class="text-center text-light">Toko Buku</h3>
+    </p>
+  </div>
+  <div class="mdc-drawer__content">
+    <div class="mdc-list-group">
+      <nav class="mdc-list mdc-drawer-menu">
+        {% if request.user|has_group:"petugas" %}
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" href="{% url 'home-page' %}"> <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i> Home </a>
+        </div>
+        {% else %} {% endif %}
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" href="{% url 'produk' %}"> <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">label</i> Daftar Buku </a>
+        </div>
+        {% if request.user|has_group:"pelanggan" %}
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" href="{% url 'pos-page' %}"> <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">payment</i> Transaksi </a>
+        </div>
+        {% else %}{% endif %}
+        {% if request.user|has_group:"petugas" %}
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" href="{% url 'sales-page' %}"> <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">receipt</i> Riwayat Transaksi </a>
+        </div>
+        {% else %} {% endif %}
+      </nav>
+    </div>
+  </div>
+</aside>
+<!-- partial -->

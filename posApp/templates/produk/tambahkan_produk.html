@@ -1,0 +1,49 @@
+{% extends 'posApp/base.html' %}{% load static %} {% block pageContent %}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-2">
+      <div class="container mt-5" style="border-radius: 11px; max-width: 40rem; border: 3.2px solid black; padding: 2rem">
+        <h1 align="center">Tambahkan Produk</h1>
+        <form action="#" method="POST" enctype="multipart/form-data">
+          <div style="max-width: 40rem;text-align:left;" class="form-group mb-4">
+            <p for="{{form.code.id_for_label}}">Code Buku</p>
+            {{form.code}}
+          </div>
+          <div style="max-width: 40rem" class="form-group">
+            <p for="{{form.name.id_for_label}}">Nama Buku</p>
+            {{form.name}}
+          </div>
+          <div style="max-width: 40rem" class="form-group">
+            <p for="{{form.category.id_for_label}}">Jenis Buku</p>
+            {{form.category_id}}
+          </div>
+          <p for="{{form.gambar.id_for_label}}">Sampul Buku<b style="color:red">*</b></p>
+          {{form.gambar}}
+
+          <div style="max-width: 40rem" class="form-group">
+            <p for="{{form.description.id_for_label}}">Deskripsi Buku</p>
+            {{form.description}}
+          </div>
+          <div style="max-width: 40rem" class="form-group">
+            <p for="{{form.stok.id_for_label}}">Stok</p>
+            {{form.stok}}
+          </div>
+          <div style="max-width: 40rem" class="form-group">
+            <p for="{{form.price.id_for_label}}">Harga Buku</p>
+            {{form.price}}
+          </div>
+
+          {% csrf_token %}
+
+          <button type="submit" class="btn btn-primary">Tambahkan</button>
+        </form>
+      </div>
+    </center>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+{% endblock pageContent %}

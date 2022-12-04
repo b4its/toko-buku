@@ -1,0 +1,164 @@
+{% block content %} {% load static %} {% load auth_extras %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'posApp/assets/bootstrap/css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <!-- My Icons -->
+    <script src="https://kit.fontawesome.com/74760b9276.js" crossorigin="anonymous"></script>
+    <title>Toko Buku</title>
+  </head>
+  <body>
+      <!-- Header -->
+      
+      <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'main' %}">
+                        <img src="{% static 'buku/tokobuku.jpg' %}" class="img-fluid" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    
+            <!--
+        <form action="" class="search-form">
+          <input type="search" name="" placeholder="Search here..." id="search-box" />
+          <label for="search-box" class="fas fa-search"></label>
+        </form>
+        <div class="icons">
+          <div id="search-btn" class="fas fa-search"></div>
+        </form>
+             -->
+                        <ul class="navbar-nav ml-auto">
+                            <div class="navbar-nav">
+                                
+                                Informasi Buku
+                                   
+                               
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Poster -->
+            <div class="container poster" style="padding:2rem;">
+                <center>
+                        <img src="{{ data.gambar.url }}"style="border-radius:5px;width:500px;% " alt="sampul buku" />
+                            
+                
+                            <h5>{{ data.name }}</h5>
+                            <h6>{{ data.category_id }} </h6>
+                            <p>{{ data.description }}</p>
+                            <p>Harga buku : Rp.{{ data.price }}</p>
+
+                            <br>
+                            {% if request.user|has_group:"pelanggan" %}           
+                          <a type="button" href="{% url 'pos-page' %}" class="btn btn-outline-dark btn-lg btn-block"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {% else %}
+                          <p type="button" class="btn btn-outline-dark btn-lg btn-block">Silahkan pergi ke kasir untuk membeli buku ini</p>
+                    {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <!-- Akhir Content -->
+
+        <!-- Footer -->
+
+        <footer>
+        
+            <div class="footer-content">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <h4>
+                                Tentang kami
+                            </h4>
+                            <p class="text-justify">
+                                Toko Buku adalah toko buku terkecil dan tidak lengkap di Indonesia yang menyediakan buku 
+                                seadanya. Toko ini dibangun guna meningkatkan literasi dan memberikan kemudahan para 
+                                pelanggan yang melakukan proses pembelanjaan. Kami memberikan pelayanan sebisa kami 
+                                dengan baik yang menjadi tujuan kami untuk berkembang kedepannya.
+                            </p>
+                        </div>
+
+                        <div class="col-md-3">
+                        </div>
+                        
+                        <div class="col-md-4">
+
+                            <h4>Information</h4>
+                            <p>
+                                Jl. Aminah Syukur No.82, Sungai Pinang Luar, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75113
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-envelope"></i> tokobuku@gmail.com
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-phone"></i> 082100238999
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+
+            <div class="footer-bottom">
+                  <p>copyright &copy;2022 designed by <span>team toko buku</span></p>
+            </div>
+
+        </footer>
+
+        <!-- Akhir Footer -->
+        {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

@@ -1,0 +1,196 @@
+{% block content %} {% load static %} 
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'posApp/assets/bootstrap/css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <!-- My Icons -->
+    <script src="https://kit.fontawesome.com/74760b9276.js" crossorigin="anonymous"></script>
+    <title>Toko Buku</title>
+  </head>
+  <body>
+      <!-- Header -->
+      
+      <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+                <div class="container">
+                    <p class="navbar-brand">
+                        <img src="{% static 'buku/tokobuku.jpg' %}" class="img-fluid" />
+                    </p>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    
+            <!--
+        <form action="" class="search-form">
+          <input type="search" name="" placeholder="Search here..." id="search-box" />
+          <label for="search-box" class="fas fa-search"></label>
+        </form>
+        <div class="icons">
+          <div id="search-btn" class="fas fa-search"></div>
+        </form>
+             -->
+                        <ul class="navbar-nav ml-auto">
+                            <div class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">informasi mengenai toko buku</a>
+                                </li>
+        
+                                   
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Poster -->
+            <div class="container poster" style="padding:2rem;">
+                <center>
+                <div class="container-fluid">
+                    <div class="input-group">
+                        <form class="form-inline container-fluid" method="POST" action="{% url 'search_buku' %}">
+                            {% csrf_token %}
+                            <input class="form-control mr-sm-2 "type="search" style="max-width:40rem;" placeholder="Mencari judul dari buku.." name="pencarian">
+                            <input class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="mencari"></input>
+                          </form>
+                    </div>
+                </div>
+            </center>
+                <div class="row">
+                    <div class="imageposter">
+                        <img src="{% static 'buku/poster.png' %}" class="img-fluid img-poster" style="border-radius:10px;" alt="..." />
+                    </div>
+                </div>
+            </div>
+            <!-- Akhir Poster -->
+
+        </div>
+
+        <!-- Akhir Header -->
+
+        <!-- Content -->
+
+        <div class="container contents-container" style="padding:2rem; ">
+
+            <h4 class="title-contents">Info Buku</h4>
+            <div class="row">
+                {% for product in data %}
+                <div class="col-md-3" >
+                    {% if product.gambar %}
+                    <div class="card" >
+                        <img src="{{ product.gambar.url }}"style="border-radius:5px; class="card-img-top" alt="sampul buku" />
+                            {% else %}
+                            <img src="{% static 'images/default.png' %}"style="border-radius:5px; class="card-img-top" alt="sampul buku" />
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p>{{ product.code }}</p>
+                            <h6 class="contents1">Rp.{{ product.price }}</h6>
+                            <br>      
+                          <a type="button" href="{% url 'informasi_buku' product.id %}" class="btn btn-outline-dark">lihat informasi buku</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+
+        <!-- Akhir Content -->
+
+        <!-- Footer -->
+
+        <footer>
+        
+            <div class="footer-content">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <h4>
+                                Tentang kami
+                            </h4>
+                            <p class="text-justify">
+                                Toko Buku adalah toko buku terkecil dan tidak lengkap di Indonesia yang menyediakan buku 
+                                seadanya. Toko ini dibangun guna meningkatkan literasi dan memberikan kemudahan para 
+                                pelanggan yang melakukan proses pembelanjaan. Kami memberikan pelayanan sebisa kami 
+                                dengan baik yang menjadi tujuan kami untuk berkembang kedepannya.
+                            </p>
+                        </div>
+
+                        <div class="col-md-3">
+                        
+                        </div>
+                        
+                        <div class="col-md-4">
+
+                            <h4>Information</h4>
+                            <p>
+                                Jl. Aminah Syukur No.82, Sungai Pinang Luar, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75113
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-envelope"></i> tokobuku@gmail.com
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-phone"></i> 082100238999
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+
+            <div class="footer-bottom">
+                  <p>copyright &copy;2022 designed by <span>team toko buku</span></p>
+            </div>
+
+        </footer>
+
+        <!-- Akhir Footer -->
+        {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

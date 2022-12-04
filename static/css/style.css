@@ -1,0 +1,92 @@
+    /* Header */
+    
+   .poster {
+        margin-top: 100px;
+    }
+
+    .img-poster {
+        border-radius: 10px;
+    }
+    
+    .navbar {
+        box-shadow: rgb(0 0 0 / 7%) 0px 4px 6px -1px;
+    }
+
+    /* Akhir Header */
+    
+    /* Content */
+
+    .contents-container {
+        margin-top: 30px;
+    }
+
+    .title-contents {
+        margin-bottom: 30px;
+    }
+
+    .row h5 {
+        font-size: 17px;
+    }
+
+    .row p {
+        font-size: 13px;
+    }
+
+    .contents1, .contents2, .contents3, .contents4  {
+        margin-bottom: 25px !important;
+    }
+
+    .contents5 {
+        margin-bottom: 28px !important;
+    }
+
+    .card {
+        box-shadow: rgb(0 0 0 / 7%) 0px 4px 6px -1px;
+    }
+
+    /* Akhir Content */
+
+    /* Footer */
+
+    footer {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #262626;
+        height: auto;
+        width: auto;
+        padding-top: 40px;
+        color: #fff;
+        margin-top: 50px;
+        
+    }
+
+    .icon {
+        color: #fff;
+    }
+
+    a.ahrefputih:hover {
+        color: #fff;
+        cursor: pointer !important;
+    }
+    
+    .footer-bottom {
+        background: #000;
+        width: auto;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        font-size: 14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
+    }
+
+    .footer-bottom span {
+        text-transform: uppercase;
+        opacity: .4;
+        font-weight: 200; 
+    }
+
+    /* Akhir Footer */
